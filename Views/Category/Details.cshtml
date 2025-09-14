@@ -1,0 +1,30 @@
+@model WebStore.Models.Category
+@{
+    ViewData["Title"] = "Category Details";
+}
+<h2>Category Details</h2>
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Products</dt>
+        <dd class="col-sm-10">
+            @if (Model.Products != null && Model.Products.Any())
+            {
+                <ul>
+                    @foreach (var product in Model.Products)
+                    {
+                        <li>@product.Title</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>No products in this category.</span>
+            }
+        </dd>
+    </dl>
+    <a asp-action="Index">Back to List</a>
+</div>
